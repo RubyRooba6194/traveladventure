@@ -45,6 +45,8 @@
 // }
 
 // export default App;
+
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/Home";
 import ExplorePage from "./pages/ExploreDestination";

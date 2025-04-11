@@ -238,7 +238,7 @@ const Home = () => {
             <p className="italic">
               "The trip exceeded all my expectations! Will book again soon."
             </p>
-            <p className="mt-4 font-semibold">- Michael Brown</p>
+            <p className="mt-4 font-semibold">- Roobasini</p>
           </div>
         </div>
       </section>
