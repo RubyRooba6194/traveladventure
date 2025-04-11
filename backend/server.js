@@ -31,6 +31,7 @@ const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authroutes");
+const adminRoutes =require ("./routes/AdminUserRoutes.js");
 
 dotenv.config();
 connectDB();
@@ -50,6 +51,7 @@ app.use(express.json()); // Middleware for JSON parsing
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);  // Admin-specific routes
 
 
 
