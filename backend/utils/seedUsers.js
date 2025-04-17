@@ -11,19 +11,19 @@ const users = [
   {
     name: "Admin User",
     email: "admin@example.com",
-    password: "password", // will be hashed
+    password: "admin123", // will be hashed
     role: "admin",
   },
   {
     name: "Editor User",
     email: "editor@example.com",
-    password: "password",
+    password: "editor123",
     role: "editor",
   },
   {
     name: "Staff User",
     email: "staff@example.com",
-    password: "password",
+    password: "staff123",
     role: "staff",
   },
 ];
