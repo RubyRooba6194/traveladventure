@@ -55,6 +55,8 @@
 // };
 
 // export default BookingConfirmation;
+
+
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { CheckCircleIcon } from "@heroicons/react/solid";

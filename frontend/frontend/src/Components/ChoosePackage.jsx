@@ -150,7 +150,7 @@ const ChoosePackage = () => {
               </div>
               <button
                 onClick={() =>
-                  navigate("/plan-trip", { state: { selectedPackage: pkg } })
+                  navigate("/book-tour/plan-trip", { state: { selectedPackage: pkg } })
                 }
                 className="mt-6 w-full bg-green-600 text-white py-3 rounded-lg shadow-md hover:bg-green-700 transition"
               >
