@@ -1,6 +1,7 @@
 // import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 // const RegisterNow = () => {
 //   const {
@@ -9,9 +10,26 @@
 //     formState: { errors },
 //   } = useForm();
 //   const [showPassword, setShowPassword] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const navigate = useNavigate();
 
-//   const onSubmit = (data) => {
-//     console.log("User Registered:", data);
+//   const onSubmit = async (data) => {
+//     try {
+//       const res = await axios.post(
+//         "http://localhost:5000/api/auth/signup",
+//         data
+//       );
+//       console.log("User Registered:", res.data);
+
+//       alert("Registration Successful! Please log in.");
+//       navigate("/login"); // Redirect to login page
+//     } catch (error) {
+//       console.error(
+//         "Registration Error:",
+//         error.response?.data || error.message
+//       );
+//       setErrorMessage(error.response?.data?.message || "Registration failed");
+//     }
 //   };
 
 //   return (
@@ -20,6 +38,10 @@
 //         <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
 //           Register Now
 //         </h2>
+
+//         {errorMessage && (
+//           <p className="text-red-500 text-center mb-4">{errorMessage}</p>
+//         )}
 
 //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 //           <div>
@@ -53,7 +75,13 @@
 //             <div className="relative">
 //               <input
 //                 type={showPassword ? "text" : "password"}
-//                 {...register("password", { required: "Password is required" })}
+//                 {...register("password", {
+//                   required: "Password is required",
+//                   minLength: {
+//                     value: 6,
+//                     message: "Password must be at least 6 characters",
+//                   },
+//                 })}
 //                 className="w-full p-3 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
 //                 placeholder="Create a password"
 //               />
@@ -90,6 +118,8 @@
 // };
 
 // export default RegisterNow;
+
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -108,7 +138,7 @@ const RegisterNow = () => {
   const onSubmit = async (data) => {
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/auth/signup",
+        "http://localhost:5000/api/auth/signup",  // Ensure this matches the backend API endpoint
         data
       );
       console.log("User Registered:", res.data);
@@ -137,15 +167,15 @@ const RegisterNow = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="block text-gray-700">Full Name</label>
+            <label className="block text-gray-700">Name</label>
             <input
               type="text"
-              {...register("fullName", { required: "Full Name is required" })}
+              {...register("name", { required: "Name is required" })} // Corrected to "name"
               className="w-full p-3 border rounded-lg focus:outline-none focus:ring focus:border-blue-400"
               placeholder="Enter your full name"
             />
-            {errors.fullName && (
-              <p className="text-red-500 text-sm">{errors.fullName.message}</p>
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name.message}</p>
             )}
           </div>
 
