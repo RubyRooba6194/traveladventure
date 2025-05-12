@@ -5,41 +5,89 @@
 // const cors = require("cors");
 // const connectDB = require("./config/db");
 
-// const userRoutes = require("./routes/authRoutes"); // ✅ Update if name is authRoutes
+// // 👇 Import the routes
+// const authRoutes = require("./routes/userRoutes");
+// // const destinationRoutes = require("./routes/destinationRoutes");
+// const packageRoutes = require("./routes/packageRoutes");
+// const bookingRoutes = require("./routes/bookingRoutes");
+// const destinationRoutes = require("./routes/destinationRoutes");
+// app.use("/api/destinations", destinationRoutes);
+
 
 // dotenv.config();
 // connectDB();
 
-// const app = express();
+// const app = express(); // ✅ Initialize app FIRST
 
+// // Middlewares
 // app.use(
 //   cors({
-//     origin: "http://localhost:5173", // Replace with your frontend port
+//     origin: "http://localhost:5173",
 //     credentials: true,
 //   })
 // );
-
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   next();
-// });
-
 // app.use(express.json());
 
+// // 👇 Now use routes AFTER app is declared
 // app.use("/api/auth", authRoutes);
+// app.use("/api/destinations", destinationRoutes);
+// app.use("/api/packages", packageRoutes);
+// app.use("/api/bookings", bookingRoutes);
 
 // const PORT = process.env.PORT || 5000;
+<<<<<<< HEAD
 // app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 >>>>>>>  (Updated components and restructured backend/frontend)
+=======
+// app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
+
+// const express = require("express");
+// const dotenv = require("dotenv");
+// const cors = require("cors");
+// const connectDB = require("./config/db");
+
+// // 👇 Import routes
+// const authRoutes = require("./routes/userRoutes");
+// const packageRoutes = require("./routes/packageRoutes");
+// const bookingRoutes = require("./routes/bookingRoutes");
+// const destinationRoutes = require("./routes/destinationRoutes");
+// import tripRoutes from "./routes/tripRoutes.js";
+
+
+// dotenv.config();
+// connectDB();
+
+// const app = express(); // ✅ App initialized here first
+
+// // Middlewares
+// app.use(
+//   cors({
+//     origin: "http://localhost:5173",
+//     credentials: true,
+//   })
+// );
+// app.use(express.json());
+
+// // 👇 Now register all routes
+// app.use("/api/auth", authRoutes);
+// app.use("/api/destinations", destinationRoutes);
+// app.use("/api/packages", packageRoutes);
+// app.use("/api/bookings", bookingRoutes);
+// app.use("/api/trips", tripRoutes);
+
+
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
+
+>>>>>>> 2bc992f (Updated backend API and fixed destination route)
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const authRoutes = require("./routes/authroutes.js");
 const adminRoutes = require("./routes/AdminUserRoutes.js");
@@ -49,15 +97,23 @@ const bookingRoutes = require("./routes/bookingRoutes");
 const inquiryRoutes = require("./routes/inquiryRoutes");
 =======
 // 👇 Import the routes
+=======
+// Import routes
+>>>>>>> 2bc992f (Updated backend API and fixed destination route)
 const authRoutes = require("./routes/userRoutes");
-const destinationRoutes = require("./routes/destinationRoutes");
 const packageRoutes = require("./routes/packageRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+<<<<<<< HEAD
 >>>>>>>  (Updated components and restructured backend/frontend)
+=======
+const destinationRoutes = require("./routes/destinationRoutes");
+const tripRoutes = require("./routes/tripRoutes"); // Changed to require()
+>>>>>>> 2bc992f (Updated backend API and fixed destination route)
 
 dotenv.config();
 connectDB();
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 const app = express();
 
@@ -77,6 +133,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
 =======
 const app = express(); // ✅ Initialize app FIRST
+=======
+const app = express(); // App initialized here first
+>>>>>>> 2bc992f (Updated backend API and fixed destination route)
 
 // Middlewares
 app.use(
@@ -88,6 +147,7 @@ app.use(
 );
 app.use(express.json());
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 app.use(express.json());
 
@@ -102,10 +162,14 @@ app.use("/api", inquiryRoutes);
 // Start Server
 =======
 // 👇 Now use routes AFTER app is declared
+=======
+// Register all routes
+>>>>>>> 2bc992f (Updated backend API and fixed destination route)
 app.use("/api/auth", authRoutes);
 app.use("/api/destinations", destinationRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/trips", tripRoutes);
 
 >>>>>>>  (Updated components and restructured backend/frontend)
 const PORT = process.env.PORT || 5000;
