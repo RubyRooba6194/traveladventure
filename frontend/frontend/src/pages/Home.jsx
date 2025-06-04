@@ -54,14 +54,14 @@ const destinations = [
   {
     id: 8,
     name: "Mavoothu Velappar Temple, Theni",
-    image: "",
+    image: "./mavoothu velappar/velappar1.jpg",
     description:
       "The world's highest tea plantation with stunning sunrise views.",
   },
   {
     id: 9,
     name: "Periyakulam Periyakovil, Theni",
-    image: "",
+    image: "./periyakovil periyakulam/periyakovil1.jpg",
     description:
       "The world's highest tea plantation with stunning sunrise views.",
   },
@@ -170,13 +170,13 @@ const Home = () => {
             className="absolute bottom-0 right-0  w-40 md:w-52 opacity-90  "
           /> */}
           {/* Travel Couple Image */}
-          <div className="w-56 md:w-72 lg:w-80">
+          {/* <div className="w-56 md:w-72 lg:w-80">
             <img
               src="/traveler.jpg"
               alt="Travel Couple"
               className="w-full h-auto"
             />
-          </div>
+          </div> */}
         </div>
       </section>
       {/* Why Choose Us Section */}
@@ -250,3 +250,208 @@ const Home = () => {
 
 
 export default Home;
+// import { useNavigate } from "react-router-dom";
+// import Header from "../Components/Header";
+// import Footer from "../Components/Footer";
+
+// const destinations = [
+//   {
+//     id: 1,
+//     name: "Megamalai, Theni",
+//     image: "/megamalai2.jpg",
+//     description: "Scenic mountain views with a cool climate.",
+//   },
+//   {
+//     id: 2,
+//     name: "Vaigai Dam, Theni",
+//     image: "/vaigaidam images/vaigaidam1.jpeg",
+//     description: "A popular dam offering serene views and relaxation.",
+//   },
+//   {
+//     id: 3,
+//     name: "Suruli Falls, Theni",
+//     image: "/surulifalls/suruli1.jpg",
+//     description: "Majestic waterfalls nestled in lush forests.",
+//   },
+//   {
+//     id: 4,
+//     name: "Kumbakarai Falls, Theni",
+//     image: "/kumbakaraifalls/kumbakarai1.jpg",
+//     description: "Hidden waterfalls perfect for a refreshing dip.",
+//   },
+//   {
+//     id: 5,
+//     name: "Kurangani Hills, Theni",
+//     image: "/kurangani hills/kurangani1.jpg",
+//     description: "Trekking paradise with breathtaking sunrise views.",
+//   },
+//   {
+//     id: 6,
+//     name: "BodiMettu, Theni",
+//     image: "/bodi mettu/bodimettu3.jpg",
+//     description: "The gateway to mesmerizing tea plantations.",
+//   },
+//   {
+//     id: 7,
+//     name: "Sothuparai Dam, Theni",
+//     image: "./sothuparaidam/sothuparai1.jpg",
+//     description: "A scenic spot surrounded by hills and waters.",
+//   },
+// ];
+
+// const Home = () => {
+//   const navigate = useNavigate();
+
+//   const handleDestinationClick = (destinationName) => {
+//     navigate(`/explore-destination`);
+//   };
+
+//   const handlePlanYourTrip = () => {
+//     navigate("/explore-destination");
+//   };
+
+//   return (
+//     <div
+//       className="min-h-screen bg-fixed bg-cover bg-center"
+//       style={{ backgroundImage: "url('/travelbg.jpg')" }} // ✨ Give a light blurred background image
+//     >
+//       <div className="bg-white bg-opacity-80">
+//         <Header />
+
+//         {/* Hero Section */}
+//         <section
+//           className="relative h-screen flex flex-col justify-center items-center text-center text-white bg-cover bg-center animate-fadeInSlow"
+//           style={{ backgroundImage: "url('/a1.jpg')" }}
+//         >
+//           <div className="bg-black bg-opacity-60 p-10 rounded-xl shadow-2xl animate-zoomIn">
+//             <h1 className="text-5xl md:text-7xl font-cursive mb-4 leading-tight tracking-widest">
+//               "Travel is the only thing you buy that makes you richer."
+//             </h1>
+//             <p className="text-lg md:text-2xl font-light mt-4">
+//               Discover hidden gems and unforgettable adventures with us.
+//             </p>
+//             <button
+//               onClick={handlePlanYourTrip}
+//               className="mt-8 px-8 py-3 bg-gradient-to-r from-blue-500 to-green-400 hover:from-blue-600 hover:to-green-500 rounded-full text-white text-xl font-semibold shadow-lg transition-all duration-500"
+//             >
+//               Start Your Journey
+//             </button>
+//           </div>
+//         </section>
+
+//         {/* Popular Destinations */}
+//         <section className="py-20 px-6">
+//           <h2 className="text-4xl font-bold text-center text-gray-800 mb-10 font-serif">
+//             Popular Destinations
+//           </h2>
+//           <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+//             {destinations.map((destination) => (
+//               <div
+//                 key={destination.id}
+//                 className="bg-white p-6 rounded-3xl shadow-lg hover:scale-105 transform transition duration-500 cursor-pointer"
+//                 onClick={() => handleDestinationClick(destination.name)}
+//               >
+//                 <img
+//                   src={destination.image}
+//                   alt={destination.name}
+//                   className="rounded-2xl w-full h-60 object-cover"
+//                 />
+//                 <h3 className="mt-6 text-2xl font-bold text-gray-700">
+//                   {destination.name}
+//                 </h3>
+//                 <p className="mt-2 text-gray-600">{destination.description}</p>
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         {/* About Section */}
+//         <section className="py-20 px-8">
+//           <div className="max-w-6xl mx-auto text-center">
+//             <h2 className="text-4xl font-bold mb-8 text-gray-800 font-serif">
+//               About Us
+//             </h2>
+//             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+//               Welcome to Travel Buddy — your trusted travel partner. We specialize in creating customized experiences for adventure seekers, nature lovers, and wanderlust souls. Whether you're looking for tranquil hill stations or lively city escapes, we have it all crafted with love. ✈️🏔️🌍
+//             </p>
+//             <div className="w-72 mx-auto mt-10">
+//               <img
+//                 src="/traveler.jpg"
+//                 alt="Travel Couple"
+//                 className="rounded-3xl shadow-lg"
+//               />
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Why Choose Us */}
+//         <section className="py-20 bg-gray-100">
+//           <div className="max-w-7xl mx-auto px-6">
+//             <h2 className="text-4xl font-bold text-center mb-12 text-gray-800 font-serif">
+//               Why Choose Travel Buddy?
+//             </h2>
+//             <div className="grid md:grid-cols-2 gap-10 text-xl text-gray-700">
+//               <ul className="space-y-6">
+//                 <li>✅ Tailor-Made Travel Experiences</li>
+//                 <li>✅ Affordable and Transparent Pricing</li>
+//                 <li>✅ Personalized Guides and Support</li>
+//                 <li>✅ 100% Customer Satisfaction Guarantee</li>
+//               </ul>
+//               <ul className="space-y-6">
+//                 <li>🌟 Exclusive Offers for Early Bookings</li>
+//                 <li>🌟 Multilingual Travel Experts</li>
+//                 <li>🌟 Real-time Customer Support 24/7</li>
+//                 <li>🌟 Secure and Easy Online Payments</li>
+//               </ul>
+//             </div>
+//           </div>
+//         </section>
+
+//         {/* Testimonials */}
+//         <section className="py-20 text-center bg-white">
+//           <h2 className="text-4xl font-bold mb-12 text-gray-800 font-serif">
+//             What Our Travelers Say
+//           </h2>
+//           <div className="grid md:grid-cols-3 gap-10 max-w-7xl mx-auto px-6">
+//             {[
+//               {
+//                 img: "/pfphoto2.jpg",
+//                 text: "A dream trip! Everything was planned to perfection. Thank you Travel Buddy!",
+//                 name: "- James Smith",
+//               },
+//               {
+//                 img: "/pfphoto1.jpg",
+//                 text: "The personalized care and guidance made my solo trip safe and memorable.",
+//                 name: "- Emily Johnson",
+//               },
+//               {
+//                 img: "/ruby.jpg",
+//                 text: "Spectacular destinations and excellent customer service. Highly recommend!",
+//                 name: "- Michael Brown",
+//               },
+//             ].map((review, index) => (
+//               <div
+//                 key={index}
+//                 className="bg-gray-100 p-8 rounded-2xl shadow-xl hover:shadow-2xl transition"
+//               >
+//                 <img
+//                   src={review.img}
+//                   alt="Reviewer"
+//                   className="w-20 h-20 rounded-full mx-auto mb-6"
+//                 />
+//                 <p className="italic text-gray-600">{review.text}</p>
+//                 <p className="mt-6 font-semibold text-gray-800">
+//                   {review.name}
+//                 </p>
+//               </div>
+//             ))}
+//           </div>
+//         </section>
+
+//         <Footer />
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Home;

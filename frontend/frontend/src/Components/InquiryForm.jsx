@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> d5ee267 (Describe what you changed here)
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -35,7 +39,7 @@ const InquiryForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-6 flex flex-col items-center">
-      <h2 className="text-4xl font-bold text-blue-700 mb-6 mt-10 py-10">Inquiry Form</h2>
+      <h2 className="text-4xl font-bold text-blue-700 mb-6 mt-10 py-10">Enquiry Form</h2>
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row gap-6">
         {/* Contact Details */}
         <div className="md:w-1/2">

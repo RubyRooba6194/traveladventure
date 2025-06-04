@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,14 +24,12 @@ export default function Header() {
     setIsMenuOpen(false);
   };
 
-  // Close dropdown when clicking outside the menu
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setDropdown(null);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -57,14 +56,14 @@ export default function Header() {
         {/* Navigation Menu */}
         <nav
           ref={menuRef}
-          className={`absolute md:static top-16 right-0 w-full md:w-auto bg-white shadow-md md:shadow-none md:flex flex-col md:flex-row transition-all ${
+          className={`absolute md:static top-16 right-0 w-full md:w-auto bg-white shadow-md md:shadow-none md:flex flex-col md:flex-row md:items-center md:justify-end transition-all ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
           {/* Main Links */}
           <button
             onClick={() => handleNavigate("/")}
-            className="block md:inline-block px-6 py-3 hover:text-blue-600"
+            className="block md:inline-block px-6 py-3 hover:text-blue-600 hover:underline decoration-blue-600 decoration-2 underline-offset-8"
           >
             Home
           </button>
@@ -75,7 +74,6 @@ export default function Header() {
               title: "Explore Destinations",
               menu: "explore",
               links: [
-                
                 { label: "Travel Highlights", path: "/travel-highlights" },
               ],
             },
@@ -107,7 +105,7 @@ export default function Header() {
             {
               title: "Contact Us",
               menu: "contact",
-              links: [{ label: "Inquiry Form", path: "/contact/inquiry-form" }],
+              links: [{ label: "Enquiry Form", path: "/contact/inquiry-form" }],
             },
             {
               title: "User Account",
@@ -121,9 +119,9 @@ export default function Header() {
             <div key={menu} className="relative">
               <button
                 onClick={() => toggleDropdown(menu)}
-                className="block md:inline-block px-6 py-3 hover:text-blue-600 w-full text-left"
+                className="block md:inline-block px-6 py-3 hover:text-blue-600 hover:underline decoration-blue-600 decoration-2 underline-offset-8 w-full text-left md:text-center"
               >
-                {title} {dropdown === menu ? "▲" : "▼"}
+                {title}
               </button>
 
               {/* Animated Dropdown */}
@@ -133,13 +131,13 @@ export default function Header() {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
-                    className="bg-gray-100 md:absolute md:left-0 md:w-48 shadow-md rounded-lg md:mt-2"
+                    className="bg-gray-100 md:absolute md:right-0 md:w-48 shadow-md rounded-lg md:mt-2"
                   >
                     {links.map(({ label, path }) => (
                       <li
                         key={label}
                         onClick={() => handleNavigate(path)}
-                        className="px-6 py-2 hover:bg-gray-300 cursor-pointer transition-all"
+                        className="px-6 py-2 hover:bg-gray-300 cursor-pointer transition-all hover:underline hover:text-blue-600 decoration-blue-600 underline-offset-8"
                       >
                         {label}
                       </li>
