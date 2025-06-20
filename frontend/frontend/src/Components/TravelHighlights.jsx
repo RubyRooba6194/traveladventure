@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const travelHighlights = [
   {
     name: "Megamalai",
-    images: ["a1.jpg", "megamalai2.jpg"],
+    images: ["a1.jpg", "megamalai2.jpg","megamalai2.jpg"],
     description: "Known for its serene atmosphere and tea estates.",
     highlights: "Scenic views, Wildlife, Tea Gardens",
   },
@@ -24,22 +24,47 @@ const travelHighlights = [
     images: [
       "./vaigaidam images/vaigaidam5.jpg",
       "./vaigaidam images/vaigaidam3.jpg",
-    ],
-    description: "A breathtaking waterfall amidst lush greenery.",
-    highlights: "Waterfalls, Trekking, Picnic Spots",
-  },
-  {
-    name: "Adukkam Falls",
-    images: [
-      "./vaigaidam images/vaigaidam5.jpg",
+      "./vaigaidam images/vaigaidam8.jpg",
       "./vaigaidam images/vaigaidam3.jpg",
     ],
     description: "A breathtaking waterfall amidst lush greenery.",
     highlights: "Waterfalls, Trekking, Picnic Spots",
   },
   {
+    name: "Adukkam Falls",
+    images: ["./adukkam/adukkam1.jpg", "./adukkam/adukkam2.jpg"],
+    description: "A breathtaking waterfall amidst lush greenery.",
+    highlights: "Waterfalls, Trekking, Picnic Spots",
+  },
+  {
     name: "BodiMettu",
-    images: ["./surulifalls/suruli1.jpg", "./surulifalls/suruli4.jpg"],
+    images: [
+      "./bodi mettu/bodimettu1.webp",
+      "./bodi mettu/bodimettu4.jpg",
+      "./bodi mettu/bodimettu5.jpg",
+      "./bodi mettu/bodimettu6.webp",
+    ],
+    description: "Famous for its wildlife sanctuary and spice plantations.",
+    highlights: "Periyar Wildlife Sanctuary, Boating, Bamboo Rafting",
+  },
+  {
+    name: "ChinnaSuruli ",
+    images: [
+      "./chinna suruli falls/chinnasuruli_trucking.jpg",
+      "./chinna suruli falls/chinnasuruli2.jpg",
+      "./chinna suruli falls/chinnasuruli3.jpg",
+    ],
+    description: "Famous for its wildlife sanctuary and spice plantations.",
+    highlights: "Periyar Wildlife Sanctuary, Boating, Bamboo Rafting",
+  },
+  {
+    name: "Kumbakarai-falls",
+    images: [
+      "./kumbakaraifalls/kumbakarai1.jpg",
+      "./kumbakaraifalls/kumbakarai2.jpg",
+      "./kumbakaraifalls/kumbakarai3.avif",
+      "./kumbakaraifalls/kumbakarai4.jpg",
+    ],
     description: "Famous for its wildlife sanctuary and spice plantations.",
     highlights: "Periyar Wildlife Sanctuary, Boating, Bamboo Rafting",
   },

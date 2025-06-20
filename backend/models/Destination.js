@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const destinationSchema = new mongoose.Schema({
-  name: String,
-  description: String,
-  location: String,
-  image: String,
-  highlights: [String],
+  name: { type: String, required: true },
+  description: { type: String },
+  image: { type: String },
+  location: { type: String, required: true },
+  folder: { type: String, required: true },
 });
 
 module.exports = mongoose.model("Destination", destinationSchema);

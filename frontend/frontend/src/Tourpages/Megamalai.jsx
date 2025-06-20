@@ -1,6 +1,9 @@
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 
 const Megamalai = () => {
   const navigate = useNavigate();
@@ -13,27 +16,51 @@ const Megamalai = () => {
     <div className="min-h-screen bg-gray-100">
       <Header />
 
-      {/* Hero Section */}
-      <section
-        className="relative h-[140vh] flex flex-col justify-center items-center text-center text-white bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/megamalai images/megamalai1.jpg')",
-        }}
-      >
-        <div className="bg-black bg-opacity-50 p-8 rounded-lg">
+      {/* Hero Section with Carousel */}
+      <section className="relative pt-20">
+        <Carousel
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+          showStatus={false}
+          interval={3000}
+          className="w-full "
+        >
+          {[
+            "../megamalai/megamalai4.jpg",
+            "../megamalai/megamalai2.jpg",
+            "../megamalai/megamalai3.jpg",
+            "../megamalai/megamalai5.jpg",
+          ].map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Megamalai ${index + 1}`}
+                className="w-full h-[80vh] object-cover"
+              />
+            </div>
+          ))}
+        </Carousel>
+
+        {/* Text Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center bg-black bg-opacity-40">
           <h1 className="text-4xl font-bold">Megamalai, Tamil Nadu</h1>
           <p className="mt-4 text-lg">
             A hidden paradise in the Western Ghats, known for tea plantations,
             lush greenery, and misty mountains.
           </p>
-          <button
-            onClick={handleGetPackageOffer}
-            className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
-          >
-            Get Package Offer
-          </button>
         </div>
       </section>
+
+      {/* Button Outside the Image */}
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handleGetPackageOffer}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
+        >
+          Get Package Offer
+        </button>
+      </div>
 
       {/* Overview Section */}
       <section className="py-12 px-6 bg-white text-center">
@@ -85,8 +112,8 @@ const Megamalai = () => {
         <h2 className="text-3xl font-bold mb-6">Best Time to Visit</h2>
         <p className="text-lg text-gray-700">
           The best time to visit Megamalai is from{" "}
-          <strong>November to May</strong>
-          when the weather is cool and pleasant.
+          <strong>November to May</strong> when the weather is cool and
+          pleasant.
         </p>
       </section>
 

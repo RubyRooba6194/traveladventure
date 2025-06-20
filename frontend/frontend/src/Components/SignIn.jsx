@@ -1,6 +1,8 @@
+
 // import React, { useState } from "react";
 // import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
+// import { Link, useNavigate } from "react-router-dom";
+// import axios from "axios";
 
 // const SignIn = () => {
 //   const {
@@ -9,9 +11,26 @@
 //     formState: { errors },
 //   } = useForm();
 //   const [showPassword, setShowPassword] = useState(false);
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const navigate = useNavigate();
 
-//   const onSubmit = (data) => {
-//     console.log("User Signed In:", data);
+//   const onSubmit = async (data) => {
+//     try {
+//       const res = axios.post("http://localhost:5000/api/auth/login", data);
+
+//       console.log("User Signed In:", res.data);
+
+//       if (res.data.token) {
+//         localStorage.setItem("token", res.data.token);
+//         alert("Login Successful!");
+//         navigate("/"); // Redirect to home page after login
+//       } else {
+//         setErrorMessage("Login failed: No token received");
+//       }
+//     } catch (error) {
+//       console.error("Login Error:", error.response?.data || error.message);
+//       setErrorMessage(error.response?.data?.message || "Invalid credentials");
+//     }
 //   };
 
 //   return (
@@ -20,6 +39,10 @@
 //         <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
 //           Sign In
 //         </h2>
+
+//         {errorMessage && (
+//           <p className="text-red-500 text-center mb-4">{errorMessage}</p>
+//         )}
 
 //         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 //           <div>
@@ -99,7 +122,6 @@ const SignIn = () => {
         data
       );
       console.log("User Signed In:", res.data);
-
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         alert("Login Successful!");
@@ -119,11 +141,9 @@ const SignIn = () => {
         <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
           Sign In
         </h2>
-
         {errorMessage && (
           <p className="text-red-500 text-center mb-4">{errorMessage}</p>
         )}
-
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="block text-gray-700">Email</label>
@@ -137,7 +157,6 @@ const SignIn = () => {
               <p className="text-red-500 text-sm">{errors.email.message}</p>
             )}
           </div>
-
           <div>
             <label className="block text-gray-700">Password</label>
             <div className="relative">
@@ -159,7 +178,6 @@ const SignIn = () => {
               <p className="text-red-500 text-sm">{errors.password.message}</p>
             )}
           </div>
-
           <button
             type="submit"
             className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
@@ -167,7 +185,6 @@ const SignIn = () => {
             Sign In
           </button>
         </form>
-
         <p className="text-center text-gray-600 mt-4">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-600 hover:underline">

@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 // Backend example (Express.js)
 const express = require('express');
+=======
+const express = require("express");
+const { registerUser, loginUser } = require("../controllers/authController");
+
+>>>>>>>  (Updated components and restructured backend/frontend)
 const router = express.Router();
 
 // Your user model and validation logic

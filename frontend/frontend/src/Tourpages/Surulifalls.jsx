@@ -1,8 +1,11 @@
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 
-const Surulifalls = () => {
+const SuruliFalls = () => {
   const navigate = useNavigate();
 
   const handleGetPackageOffer = () => {
@@ -13,36 +16,60 @@ const Surulifalls = () => {
     <div className="min-h-screen bg-gray-100">
       <Header />
 
-      {/* Hero Section */}
-      <section
-        className="relative h-[140vh] flex flex-col justify-center items-center text-center text-white bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/surulifalls images/surulifalls1.jpg')",
-        }}
-      >
-        <div className="bg-black bg-opacity-50 p-8 rounded-lg">
+      {/* Hero Section with Carousel */}
+      <section className="relative pt-20">
+        <Carousel
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+          showStatus={false}
+          interval={3000}
+          className="w-full"
+        >
+          {[
+            "../surulifalls/suruli6.jpg",
+            "../surulifalls/suruli4.jpg",
+            "../surulifalls/suruli5.jpg",
+            "../surulifalls/suruli3.webp",
+          ].map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Suruli Falls ${index + 1}`}
+                className="w-full h-[80vh] object-cover"
+              />
+            </div>
+          ))}
+        </Carousel>
+
+        {/* Text Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center bg-black bg-opacity-40">
           <h1 className="text-4xl font-bold">Suruli Falls, Tamil Nadu</h1>
           <p className="mt-4 text-lg">
-            A magnificent waterfall nestled in lush greenery, perfect for nature
-            lovers and adventure seekers.
+            A magnificent waterfall known for its perennial flow, surrounded by
+            lush green forests and hills.
           </p>
-          <button
-            onClick={handleGetPackageOffer}
-            className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
-          >
-            Get Package Offer
-          </button>
         </div>
       </section>
+
+      {/* Button Outside the Image */}
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handleGetPackageOffer}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
+        >
+          Get Package Offer
+        </button>
+      </div>
 
       {/* Overview Section */}
       <section className="py-12 px-6 bg-white text-center">
         <h2 className="text-3xl font-bold mb-6">Overview</h2>
         <p className="text-lg text-gray-700">
-          Suruli Falls is a stunning two-stage waterfall located in the Western
-          Ghats. Known for its medicinal value, the water originates from the
-          Megamalai hills and cascades down a height of 150 feet, offering a
-          breathtaking view.
+          Suruli Falls is a mesmerizing 2-stage waterfall located in the Western
+          Ghats. It is famous for its scenic beauty, Ayurvedic healing
+          properties, and religious significance, making it a must-visit
+          attraction.
         </p>
       </section>
 
@@ -54,23 +81,26 @@ const Surulifalls = () => {
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              "Scenic Beauty",
-              "Trekking Adventure",
-              "Refreshing Bath",
-              "Historic Caves",
-            ].map((title, index) => (
+              {
+                title: "Perennial Waterfall",
+                desc: "Enjoy the breathtaking beauty of the 2-stage waterfall.",
+              },
+              {
+                title: "Lush Greenery",
+                desc: "Surrounded by dense forests and hills, offering a peaceful retreat.",
+              },
+              {
+                title: "Ayurvedic Healing",
+                desc: "Believed to have medicinal properties that benefit visitors.",
+              },
+              {
+                title: "Religious Significance",
+                desc: "Close to Kailasanathar Temple, a famous pilgrimage site.",
+              },
+            ].map((item, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">{title}</h3>
-                <p className="text-gray-700">
-                  {title === "Scenic Beauty" &&
-                    "Surrounded by dense forests, offering breathtaking views."}
-                  {title === "Trekking Adventure" &&
-                    "A popular trekking spot with trails leading through lush greenery."}
-                  {title === "Refreshing Bath" &&
-                    "Visitors can take a dip in the cool, medicinal waters of the falls."}
-                  {title === "Historic Caves" &&
-                    "Nearby Kailasanathar Temple Cave is rich in ancient sculptures."}
-                </p>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -81,9 +111,9 @@ const Surulifalls = () => {
       <section className="py-12 px-6 bg-white text-center">
         <h2 className="text-3xl font-bold mb-6">Best Time to Visit</h2>
         <p className="text-lg text-gray-700">
-          The best time to visit Suruli Falls is from{" "}
-          <strong>June to October</strong>
-          when the waterfall is at its peak flow due to monsoon rains.
+          The best time to visit Suruli Falls is during the{" "}
+          <strong>monsoon season (June to October)</strong>
+          when the waterfall is at its full glory.
         </p>
       </section>
 
@@ -94,17 +124,23 @@ const Surulifalls = () => {
             How to Reach Suruli Falls
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {["By Road", "By Train", "By Air"].map((title, index) => (
+            {[
+              {
+                title: "By Road",
+                desc: "Located 56 km from Theni, accessible by private vehicles and buses.",
+              },
+              {
+                title: "By Train",
+                desc: "Nearest railway station: Theni Railway Station (56 km).",
+              },
+              {
+                title: "By Air",
+                desc: "Closest airport: Madurai Airport (125 km), with cab services available.",
+              },
+            ].map((item, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-bold mb-2">{title}</h3>
-                <p className="text-gray-700">
-                  {title === "By Road" &&
-                    "Located 10 km from Cumbum, accessible via taxis and buses."}
-                  {title === "By Train" &&
-                    "Nearest railway station: Theni Railway Station (50 km)."}
-                  {title === "By Air" &&
-                    "Closest airport: Madurai Airport (125 km), with cab services available."}
-                </p>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -119,16 +155,16 @@ const Surulifalls = () => {
           </h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
             <li>
-              <strong>Megamalai</strong> (45 km) - A beautiful hill station with
-              tea plantations.
+              <strong>Meghamalai</strong> (60 km) - A beautiful hill station
+              with stunning views.
             </li>
             <li>
-              <strong>Periyar Wildlife Sanctuary</strong> (60 km) - Home to
-              diverse wildlife and lush forests.
+              <strong>Vaigai Dam</strong> (50 km) - A major water reservoir
+              offering scenic landscapes.
             </li>
             <li>
-              <strong>Vaigai Dam</strong> (55 km) - A picturesque reservoir with
-              scenic views.
+              <strong>Periyar Wildlife Sanctuary</strong> (90 km) - Home to
+              elephants, tigers, and exotic birds.
             </li>
           </ul>
         </div>
@@ -139,4 +175,4 @@ const Surulifalls = () => {
   );
 };
 
-export default Surulifalls;
+export default SuruliFalls;

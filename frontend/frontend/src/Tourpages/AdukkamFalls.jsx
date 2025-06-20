@@ -1,9 +1,12 @@
+
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import { useNavigate } from "react-router-dom";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // Import carousel styles
 
 const AdukkamFalls = () => {
-  const navigate = useNavigate(); // Corrected usage
+  const navigate = useNavigate();
 
   const handleGetPackageOffer = () => {
     navigate("/book-tour/choose-package");
@@ -13,38 +16,60 @@ const AdukkamFalls = () => {
     <div className="min-h-screen bg-gray-100">
       <Header />
 
-      {/* Hero Section */}
-      <section
-        className="relative h-[140vh] flex flex-col justify-center items-center text-center text-white bg-cover bg-center"
-        style={{
-          backgroundImage: "url('/adukkamfalls images/adukkamfalls1.jpg')",
-        }}
-      >
-        <div className="bg-black bg-opacity-50 p-8 rounded-lg">
+      {/* Hero Section with Carousel */}
+      <section className="relative pt-20">
+        <Carousel
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+          showStatus={false}
+          interval={3000}
+          className="w-full"
+        >
+          {[
+            "../adukkam/adukkam1.jpg",
+            "../adukkam/adukkam2.jpg",
+            // "../adukkamfalls/adukkam3.jpg",
+          ].map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Adukkam Falls ${index + 1}`}
+                className="w-full h-[80vh] object-cover"
+              />
+            </div>
+          ))}
+        </Carousel>
+
+        {/* Text Overlay */}
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white text-center bg-black bg-opacity-40">
           <h1 className="text-4xl font-bold">Adukkam Falls, Tamil Nadu</h1>
           <p className="mt-4 text-lg">
-            A hidden gem with pristine waterfalls, lush greenery, and a serene
-            atmosphere.
+            A breathtaking waterfall hidden amidst lush greenery, offering a
+            serene escape into nature.
           </p>
-          <button
-            onClick={handleGetPackageOffer}
-            className="mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
-          >
-            Get Package Offer
-          </button>
         </div>
       </section>
 
+      {/* Button Outside the Image */}
+      <div className="flex justify-center mt-8">
+        <button
+          onClick={handleGetPackageOffer}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow-lg transition-all"
+        >
+          Get Package Offer
+        </button>
+      </div>
+
       {/* Overview Section */}
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Overview</h2>
-          <p className="text-lg text-gray-700">
-            Nestled in the lush green hills, Adukkam Falls is a spectacular
-            natural wonder. The cascading waters and tranquil surroundings make
-            it a perfect retreat for nature lovers and adventurers.
-          </p>
-        </div>
+      <section className="py-12 px-6 bg-white text-center">
+        <h2 className="text-3xl font-bold mb-6">Overview</h2>
+        <p className="text-lg text-gray-700">
+          Adukkam Falls is a mesmerizing waterfall located in the hills of Tamil
+          Nadu. Surrounded by dense forests and scenic landscapes, it is a
+          popular destination for nature lovers and trekkers seeking
+          tranquility.
+        </p>
       </section>
 
       {/* Highlights Section */}
@@ -54,33 +79,29 @@ const AdukkamFalls = () => {
             Highlights of Adukkam Falls
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Scenic Beauty</h3>
-              <p className="text-gray-700">
-                Surrounded by dense forests and rolling hills, offering
-                breathtaking views.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Trekking Adventure</h3>
-              <p className="text-gray-700">
-                Ideal for trekking enthusiasts with scenic trails leading to the
-                falls.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Refreshing Bath</h3>
-              <p className="text-gray-700">
-                Visitors can take a dip in the refreshing natural pool below the
-                falls.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">Best Photography Spot</h3>
-              <p className="text-gray-700">
-                A paradise for photographers looking to capture nature's beauty.
-              </p>
-            </div>
+            {[
+              {
+                title: "Scenic Waterfall",
+                desc: "A stunning natural cascade surrounded by lush forests.",
+              },
+              {
+                title: "Adventure Trekking",
+                desc: "Exciting trekking trails leading to the falls.",
+              },
+              {
+                title: "Photography Spot",
+                desc: "Perfect place for capturing breathtaking views.",
+              },
+              {
+                title: "Refreshing Escape",
+                desc: "A peaceful retreat with cool, misty surroundings.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -89,9 +110,9 @@ const AdukkamFalls = () => {
       <section className="py-12 px-6 bg-white text-center">
         <h2 className="text-3xl font-bold mb-6">Best Time to Visit</h2>
         <p className="text-lg text-gray-700">
-          The best time to visit Adukkam Falls is from{" "}
-          <strong>July to December</strong>
-          when the waterfall is at its full glory and the weather is pleasant.
+          The best time to visit Adukkam Falls is during the **monsoon and
+          post-monsoon seasons**, from <strong>July to February</strong>, when
+          the waterfall is at its full glory.
         </p>
       </section>
 
@@ -102,26 +123,25 @@ const AdukkamFalls = () => {
             How to Reach Adukkam Falls
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">By Road</h3>
-              <p className="text-gray-700">
-                Accessible via well-connected roads; taxis and buses are
-                available.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">By Train</h3>
-              <p className="text-gray-700">
-                Nearest railway station: Theni Railway Station (35 km away).
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-xl font-bold mb-2">By Air</h3>
-              <p className="text-gray-700">
-                Closest airport: Madurai Airport (110 km), with cab services
-                available.
-              </p>
-            </div>
+            {[
+              {
+                title: "By Road",
+                desc: "Easily accessible by private vehicles and local buses from Theni.",
+              },
+              {
+                title: "By Train",
+                desc: "Nearest railway station: Theni Railway Station (40 km).",
+              },
+              {
+                title: "By Air",
+                desc: "Closest airport: Madurai Airport (110 km), with taxi services available.",
+              },
+            ].map((item, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -134,16 +154,16 @@ const AdukkamFalls = () => {
           </h2>
           <ul className="list-disc list-inside text-lg text-gray-700 space-y-2">
             <li>
-              <strong>Kumbakarai Falls</strong> (20 km) - Another beautiful
-              waterfall nearby.
+              <strong>Kumbakkarai Falls</strong> (35 km) - A scenic waterfall
+              perfect for picnics.
             </li>
             <li>
-              <strong>Meghamalai</strong> (50 km) - A serene hill station with
-              tea plantations.
+              <strong>Megamalai Hills</strong> (50 km) - A breathtaking hill
+              station with tea plantations.
             </li>
             <li>
-              <strong>Vaigai Dam</strong> (45 km) - A scenic dam offering
-              picturesque views.
+              <strong>Suruli Falls</strong> (70 km) - A magnificent waterfall in
+              a dense forest setting.
             </li>
           </ul>
         </div>

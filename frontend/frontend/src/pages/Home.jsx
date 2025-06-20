@@ -110,7 +110,7 @@ const Home = () => {
 
       {/* Hero Section */}
       <section
-        className="relative h-[80vh]  flex flex-col justify-center items-center text-center text-white  bg-cover bg-center"
+        className="relative h-[100vh]  flex flex-col justify-center items-center text-center text-white  bg-cover bg-center "
         style={{ backgroundImage: "url('/a1.jpg') " }}
       >
         <div className="bg-black bg-opacity-50 p-10 rounded-lg">

@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+<<<<<<< HEAD
 
 exports.registerUser = async (req, res) => {
   // Log to check the incoming request body
@@ -60,9 +61,13 @@ exports.registerUser = async (req, res) => {
 
 
 exports.loginUser = async (req, res) => {
+=======
+exports.registerUser = async (req, res) => {
+>>>>>>>  (Updated components and restructured backend/frontend)
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
 
+<<<<<<< HEAD
     if (!email || !password) {
       return res.status(400).json({ message: "Email and password required" });
     }
@@ -87,8 +92,34 @@ exports.loginUser = async (req, res) => {
         email: user.email,
       },
     });
+=======
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ message: "User already exists" });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({ name, email, password: hashedPassword });
+
+    res.status(201).json({ message: "User registered successfully" });
   } catch (err) {
-    console.error("Login error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+exports.loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user || !(await bcrypt.compare(password, user.password))) {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
+    res.json({ token, user: { name: user.name, email: user.email } });
+>>>>>>>  (Updated components and restructured backend/frontend)
+  } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
 };

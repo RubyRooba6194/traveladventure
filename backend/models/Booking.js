@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const mongoose = require("mongoose");
 
 // const bookingSchema = new mongoose.Schema(
@@ -41,3 +42,21 @@ const bookingSchema = new mongoose.Schema({
 
 const Booking = mongoose.model('Booking', bookingSchema);
 module.exports = Booking;
+=======
+const mongoose = require("mongoose");
+
+const bookingSchema = new mongoose.Schema({
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  packageId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Package",
+    required: true,
+  },
+  bookingDate: { type: Date, default: Date.now },
+  travelDate: { type: Date, required: true },
+  travelers: { type: Number, required: true },
+  status: { type: String, default: "confirmed" },
+});
+
+module.exports = mongoose.model("Booking", bookingSchema);
+>>>>>>>  (Updated components and restructured backend/frontend)

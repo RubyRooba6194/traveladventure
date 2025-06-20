@@ -183,7 +183,7 @@ const PlanYourTrip = () => {
 
   const handlePayment = () => {
     const options = {
-      key: "rzp_test_ASKlzH8sAYqsBU", // Replace with your Razorpay Key
+      key: "rzp_test_wOpCMCCeoM39EL", // Replace with your Razorpay Key
       amount: tripDetails.price * 100,
       currency: "INR",
       name: "Tour Package",

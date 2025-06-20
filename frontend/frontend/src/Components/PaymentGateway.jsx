@@ -46,7 +46,7 @@ import React from "react";
 const PaymentGateway = ({ onPaymentSuccess }) => {
   const handlePayment = () => {
     const options = {
-      key: "rzp_test_ASKlzH8sAYqsBU", // Replace with your actual Test API Key
+      key: "rzp_test_wOpCMCCeoM39EL", // Replace with your actual Test API Key
       amount: 50000, // Example amount in paise (₹500 = 50000 paise)
       currency: "INR",
       name: "Book Your Tour",
