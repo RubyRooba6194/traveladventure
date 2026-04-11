@@ -8,7 +8,6 @@ connectDB();
 
 const app = express();
 
-// CORS — allow all localhost ports
 app.use(
   cors({
     origin: function (origin, callback) {

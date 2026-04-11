@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/signup", registerUser);
 router.post("/login", loginUser);
 
-// Admin: get all users
+// Admin only: get all users
 router.get("/users", protectAdmin, async (req, res) => {
   try {
     const users = await User.find().select("-password").sort({ createdAt: -1 });
