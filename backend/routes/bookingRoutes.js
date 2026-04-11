@@ -1,26 +1,18 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
-
-const {
-  getAllBookings,
-  createBooking,
-  updateBooking,
-  deleteBooking,
-} = require("../controllers/bookingController");
-
-router.get("/", getAllBookings);
-router.post("/", createBooking);
-router.put("/:id", updateBooking);
-router.delete("/:id", deleteBooking);
-=======
 const {
   createBooking,
   getUserBookings,
+  getAllBookings,
+  updateBooking,
+  deleteBooking,
 } = require("../controllers/bookingController");
+const protect = require("../middleware/authMiddleware");
 
-router.post("/", createBooking);
-router.get("/:userId", getUserBookings);
->>>>>>>  (Updated components and restructured backend/frontend)
+router.post("/", protect, createBooking);
+router.get("/my-bookings", protect, getUserBookings);
+router.get("/all", getAllBookings);
+router.put("/:id", updateBooking);
+router.delete("/:id", deleteBooking);
 
 module.exports = router;
